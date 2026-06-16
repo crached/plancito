@@ -1,0 +1,223 @@
+import React from "react";
+import {
+  Calendar,
+  CheckCircle,
+  BarChart3,
+  Clock3,
+  ArrowRight,
+} from "lucide-react";
+
+export default function PlaniLanding() {
+  const features = [
+    {
+      icon: <Calendar className="w-8 h-8 text-emerald-600" />,
+      title: "Planificación simple",
+      description:
+        "Organizá tus tareas, objetivos y actividades en un solo lugar.",
+    },
+    {
+      icon: <Clock3 className="w-8 h-8 text-emerald-600" />,
+      title: "Ahorro de tiempo",
+      description:
+        "Automatizá tu organización y enfocáte en lo importante.",
+    },
+    {
+      icon: <CheckCircle className="w-8 h-8 text-emerald-600" />,
+      title: "Seguimiento",
+      description:
+        "Visualizá tu progreso y mantené tus metas bajo control.",
+    },
+    {
+      icon: <BarChart3 className="w-8 h-8 text-emerald-600" />,
+      title: "Mayor productividad",
+      description:
+        "Convertí tus objetivos en acciones concretas y medibles.",
+    },
+  ];
+
+  return (
+    <div className="min-h-screen bg-white text-gray-800">
+
+      {/* NAVBAR */}
+      <nav className="border-b border-gray-100 bg-white sticky top-0 z-50">
+        <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <img
+              src="/logo.png"
+              alt="Plani"
+              className="w-10 h-10 object-contain"
+            />
+            <span className="font-bold text-xl text-emerald-700">
+              Plani
+            </span>
+          </div>
+
+          <button className="bg-emerald-500 hover:bg-emerald-600 transition text-white px-5 py-2 rounded-full">
+            Comenzar
+          </button>
+        </div>
+      </nav>
+
+      {/* HERO */}
+      <section className="max-w-6xl mx-auto px-6 py-24">
+        <div className="grid md:grid-cols-2 gap-14 items-center">
+
+          <div>
+            <span className="bg-emerald-100 text-emerald-700 px-4 py-2 rounded-full text-sm font-medium">
+              Organización inteligente
+            </span>
+
+            <h1 className="text-5xl font-bold mt-6 leading-tight">
+              Planificá tu día con más claridad y menos estrés
+            </h1>
+
+            <p className="text-gray-600 text-lg mt-6">
+              Una herramienta simple para organizar tareas, objetivos y
+              mantener el foco en lo que realmente importa.
+            </p>
+
+            <div className="flex gap-4 mt-8">
+              <button className="bg-emerald-500 hover:bg-emerald-600 text-white px-7 py-3 rounded-full flex items-center gap-2">
+                Empezar ahora
+                <ArrowRight className="w-5 h-5" />
+              </button>
+
+              <button className="border border-emerald-500 text-emerald-600 px-7 py-3 rounded-full hover:bg-emerald-50">
+                Saber más
+              </button>
+            </div>
+
+            {/* CHIPS */}
+            <div className="flex flex-wrap gap-3 mt-10">
+              <div className="bg-gray-100 px-4 py-2 rounded-full">
+                ✓ Fácil de usar
+              </div>
+
+              <div className="bg-gray-100 px-4 py-2 rounded-full">
+                ✓ Visual y práctica
+              </div>
+
+              <div className="bg-gray-100 px-4 py-2 rounded-full">
+                ✓ Ideal para estudiantes y profesionales
+              </div>
+            </div>
+          </div>
+
+          <div className="flex justify-center">
+            <div className="bg-emerald-50 rounded-3xl p-10 shadow-lg">
+              <img
+                src="/hero-image.png"
+                alt="Planificación"
+                className="max-w-md"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FEATURES */}
+      <section className="bg-gray-50 py-24">
+        <div className="max-w-6xl mx-auto px-6">
+
+          <h2 className="text-3xl font-bold text-center mb-14">
+            Todo lo que necesitás para organizarte
+          </h2>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+            {features.map((feature, index) => (
+              <div
+                key={index}
+                className="bg-white rounded-3xl p-8 shadow-sm hover:shadow-lg transition"
+              >
+                {feature.icon}
+
+                <h3 className="font-semibold text-xl mt-5">
+                  {feature.title}
+                </h3>
+
+                <p className="text-gray-600 mt-3">
+                  {feature.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* HOW IT WORKS */}
+      <section className="py-24">
+        <div className="max-w-5xl mx-auto px-6">
+
+          <h2 className="text-3xl font-bold text-center mb-16">
+            ¿Cómo funciona?
+          </h2>
+
+          <div className="grid md:grid-cols-3 gap-10">
+
+            <div className="text-center">
+              <div className="w-16 h-16 rounded-full bg-emerald-100 flex items-center justify-center mx-auto text-2xl font-bold text-emerald-700">
+                1
+              </div>
+
+              <h3 className="font-semibold text-xl mt-5">
+                Definí tus objetivos
+              </h3>
+
+              <p className="text-gray-600 mt-3">
+                Identificá las tareas y metas que querés alcanzar.
+              </p>
+            </div>
+
+            <div className="text-center">
+              <div className="w-16 h-16 rounded-full bg-emerald-100 flex items-center justify-center mx-auto text-2xl font-bold text-emerald-700">
+                2
+              </div>
+
+              <h3 className="font-semibold text-xl mt-5">
+                Organizá tu tiempo
+              </h3>
+
+              <p className="text-gray-600 mt-3">
+                Priorizá actividades y mantené una rutina sostenible.
+              </p>
+            </div>
+
+            <div className="text-center">
+              <div className="w-16 h-16 rounded-full bg-emerald-100 flex items-center justify-center mx-auto text-2xl font-bold text-emerald-700">
+                3
+              </div>
+
+              <h3 className="font-semibold text-xl mt-5">
+                Seguimiento y progreso
+              </h3>
+
+              <p className="text-gray-600 mt-3">
+                Revisá tus avances y ajustá tus objetivos cuando sea necesario.
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer className="bg-emerald-700 text-white py-10">
+        <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between gap-4">
+
+          <div>
+            <h3 className="font-bold text-xl">Plani</h3>
+            <p className="opacity-80 mt-2">
+              Organizá tu tiempo de manera simple.
+            </p>
+          </div>
+
+          <div className="opacity-80">
+            © 2026 Plani. Todos los derechos reservados.
+          </div>
+
+        </div>
+      </footer>
+    </div>
+  );
+}

@@ -1,223 +1,311 @@
-import React from "react";
-import {
-  Calendar,
-  CheckCircle,
-  BarChart3,
-  Clock3,
-  ArrowRight,
-} from "lucide-react";
-
-export default function PlaniLanding() {
-  const features = [
+const places = [
     {
-      icon: <Calendar className="w-8 h-8 text-emerald-600" />,
-      title: "Planificación simple",
-      description:
-        "Organizá tus tareas, objetivos y actividades en un solo lugar.",
+        emoji: "☕",
+        badge: "Café de especialidad",
+        title: "La Calma Café",
+        detail:
+            "Luz natural, música suave y el mejor cortado de Palermo.",
+        zone: "$ · Palermo Soho",
+        match: "96%",
+        gradient: "linear-gradient(135deg,#FDE8D8,#F2874A)",
     },
     {
-      icon: <Clock3 className="w-8 h-8 text-emerald-600" />,
-      title: "Ahorro de tiempo",
-      description:
-        "Automatizá tu organización y enfocáte en lo importante.",
+        emoji: "🕯️",
+        badge: "Primera cita",
+        title: "Rincón Flora",
+        detail:
+            "Ambiente íntimo, velas y vinos naturales.",
+        zone: "$$ · San Telmo",
+        match: "91%",
+        gradient: "linear-gradient(135deg,#E8D5C4,#C8A882)",
     },
     {
-      icon: <CheckCircle className="w-8 h-8 text-emerald-600" />,
-      title: "Seguimiento",
-      description:
-        "Visualizá tu progreso y mantené tus metas bajo control.",
+        emoji: "🌿",
+        badge: "Al aire libre",
+        title: "Jardín Común",
+        detail:
+            "Terraza verde y mesas amplias para reuniones largas.",
+        zone: "$$ · Colegiales",
+        match: "88%",
+        gradient: "linear-gradient(135deg,#D4EAD4,#8FA88A)",
     },
     {
-      icon: <BarChart3 className="w-8 h-8 text-emerald-600" />,
-      title: "Mayor productividad",
-      description:
-        "Convertí tus objetivos en acciones concretas y medibles.",
+        emoji: "🍷",
+        badge: "After office",
+        title: "Bar Nocturno",
+        detail:
+            "Cócteles creativos y ambiente ideal para viernes.",
+        zone: "$$ · Retiro",
+        match: "84%",
+        gradient: "linear-gradient(135deg,#E8E0F0,#9B7FCC)",
     },
-  ];
+]
 
-  return (
-    <div className="min-h-screen bg-white text-gray-800">
+function PlaceCard({ place }) {
+    return (
+        <div style={styles.card}>
+            <div
+                style={{
+                    ...styles.cardImage,
+                    background: place.gradient,
+                }}
+            >
+                <div style={styles.cardEmoji}>{place.emoji}</div>
 
-      {/* NAVBAR */}
-      <nav className="border-b border-gray-100 bg-white sticky top-0 z-50">
-        <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <img
-              src="/logo.png"
-              alt="Plani"
-              className="w-10 h-10 object-contain"
-            />
-            <span className="font-bold text-xl text-emerald-700">
-              Plani
-            </span>
-          </div>
+                <div style={styles.cardBadge}>
+                    {place.badge}
+                </div>
+            </div>
 
-          <button className="bg-emerald-500 hover:bg-emerald-600 transition text-white px-5 py-2 rounded-full">
-            Comenzar
-          </button>
+            <div style={styles.cardBody}>
+                <div style={styles.cardTitle}>
+                    {place.title}
+                </div>
+
+                <div style={styles.cardDetail}>
+                    {place.detail}
+                </div>
+
+                <div style={styles.cardRow}>
+                    <span>{place.zone}</span>
+
+                    <div style={styles.matchBadge}>
+                        {place.match} para vos
+                    </div>
+                </div>
+            </div>
         </div>
-      </nav>
-
-      {/* HERO */}
-      <section className="max-w-6xl mx-auto px-6 py-24">
-        <div className="grid md:grid-cols-2 gap-14 items-center">
-
-          <div>
-            <span className="bg-emerald-100 text-emerald-700 px-4 py-2 rounded-full text-sm font-medium">
-              Organización inteligente
-            </span>
-
-            <h1 className="text-5xl font-bold mt-6 leading-tight">
-              Planificá tu día con más claridad y menos estrés
-            </h1>
-
-            <p className="text-gray-600 text-lg mt-6">
-              Una herramienta simple para organizar tareas, objetivos y
-              mantener el foco en lo que realmente importa.
-            </p>
-
-            <div className="flex gap-4 mt-8">
-              <button className="bg-emerald-500 hover:bg-emerald-600 text-white px-7 py-3 rounded-full flex items-center gap-2">
-                Empezar ahora
-                <ArrowRight className="w-5 h-5" />
-              </button>
-
-              <button className="border border-emerald-500 text-emerald-600 px-7 py-3 rounded-full hover:bg-emerald-50">
-                Saber más
-              </button>
-            </div>
-
-            {/* CHIPS */}
-            <div className="flex flex-wrap gap-3 mt-10">
-              <div className="bg-gray-100 px-4 py-2 rounded-full">
-                ✓ Fácil de usar
-              </div>
-
-              <div className="bg-gray-100 px-4 py-2 rounded-full">
-                ✓ Visual y práctica
-              </div>
-
-              <div className="bg-gray-100 px-4 py-2 rounded-full">
-                ✓ Ideal para estudiantes y profesionales
-              </div>
-            </div>
-          </div>
-
-          <div className="flex justify-center">
-            <div className="bg-emerald-50 rounded-3xl p-10 shadow-lg">
-              <img
-                src="/hero-image.png"
-                alt="Planificación"
-                className="max-w-md"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* FEATURES */}
-      <section className="bg-gray-50 py-24">
-        <div className="max-w-6xl mx-auto px-6">
-
-          <h2 className="text-3xl font-bold text-center mb-14">
-            Todo lo que necesitás para organizarte
-          </h2>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-
-            {features.map((feature, index) => (
-              <div
-                key={index}
-                className="bg-white rounded-3xl p-8 shadow-sm hover:shadow-lg transition"
-              >
-                {feature.icon}
-
-                <h3 className="font-semibold text-xl mt-5">
-                  {feature.title}
-                </h3>
-
-                <p className="text-gray-600 mt-3">
-                  {feature.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* HOW IT WORKS */}
-      <section className="py-24">
-        <div className="max-w-5xl mx-auto px-6">
-
-          <h2 className="text-3xl font-bold text-center mb-16">
-            ¿Cómo funciona?
-          </h2>
-
-          <div className="grid md:grid-cols-3 gap-10">
-
-            <div className="text-center">
-              <div className="w-16 h-16 rounded-full bg-emerald-100 flex items-center justify-center mx-auto text-2xl font-bold text-emerald-700">
-                1
-              </div>
-
-              <h3 className="font-semibold text-xl mt-5">
-                Definí tus objetivos
-              </h3>
-
-              <p className="text-gray-600 mt-3">
-                Identificá las tareas y metas que querés alcanzar.
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-16 h-16 rounded-full bg-emerald-100 flex items-center justify-center mx-auto text-2xl font-bold text-emerald-700">
-                2
-              </div>
-
-              <h3 className="font-semibold text-xl mt-5">
-                Organizá tu tiempo
-              </h3>
-
-              <p className="text-gray-600 mt-3">
-                Priorizá actividades y mantené una rutina sostenible.
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-16 h-16 rounded-full bg-emerald-100 flex items-center justify-center mx-auto text-2xl font-bold text-emerald-700">
-                3
-              </div>
-
-              <h3 className="font-semibold text-xl mt-5">
-                Seguimiento y progreso
-              </h3>
-
-              <p className="text-gray-600 mt-3">
-                Revisá tus avances y ajustá tus objetivos cuando sea necesario.
-              </p>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* FOOTER */}
-      <footer className="bg-emerald-700 text-white py-10">
-        <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between gap-4">
-
-          <div>
-            <h3 className="font-bold text-xl">Plani</h3>
-            <p className="opacity-80 mt-2">
-              Organizá tu tiempo de manera simple.
-            </p>
-          </div>
-
-          <div className="opacity-80">
-            © 2026 Plani. Todos los derechos reservados.
-          </div>
-
-        </div>
-      </footer>
-    </div>
-  );
+    )
 }
+
+function HowItWorks() {
+    const steps = [
+        {
+            icon: "📍",
+            title: "Contale a Plani qué buscás",
+            desc: "Elegís el mood y Plani hace el resto.",
+        },
+        {
+            icon: "✨",
+            title: "Recibís opciones",
+            desc: "Toda la información en un solo lugar.",
+        },
+        {
+            icon: "💾",
+            title: "Guardás tus favoritos",
+            desc: "Compartilos con quien quieras.",
+        },
+        {
+            icon: "🎯",
+            title: "Plani aprende",
+            desc: "Las recomendaciones son cada vez más tuyas.",
+        },
+    ]
+
+    return (
+        <section style={styles.howSection}>
+            <div style={styles.howContainer}>
+                <h2 style={styles.howTitle}>
+                    Cómo funciona Plani
+                </h2>
+
+                <div style={styles.stepsGrid}>
+                    {steps.map((step) => (
+                        <div key={step.title}>
+                            <div style={styles.stepIcon}>
+                                {step.icon}
+                            </div>
+
+                            <div style={styles.stepTitle}>
+                                {step.title}
+                            </div>
+
+                            <div style={styles.stepDesc}>
+                                {step.desc}
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+    )
+}
+
+function Footer() {
+    return (
+        <footer style={styles.footer}>
+            <div style={styles.footerLogo}>
+                Plani ✦
+            </div>
+
+            <div style={styles.footerLinks}>
+                <a>Cómo funciona</a>
+                <a>Para negocios</a>
+                <a>Contacto</a>
+            </div>
+
+            <div style={styles.footerCopy}>
+                © 2025 Plani · Hecho con ☕ en Buenos Aires
+            </div>
+        </footer>
+    )
+}
+
+<section style={styles.cardsSection}>
+    <h2 style={styles.cardsTitle}>
+        Lugares que te van a gustar
+    </h2>
+
+    <div style={styles.cardsGrid}>
+        {places.map((place) => (
+            <PlaceCard
+                key={place.title}
+                place={place}
+            />
+        ))}
+    </div>
+</section>
+
+<HowItWorks />
+
+<Footer />
+
+cardsSection: {
+    maxWidth: 1200,
+    margin: "0 auto",
+    padding: "80px 40px",
+},
+
+cardsTitle: {
+    fontSize: 34,
+    fontWeight: 900,
+    marginBottom: 32,
+},
+
+cardsGrid: {
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit,minmax(250px,1fr))",
+    gap: 20,
+},
+
+card: {
+    background: "white",
+    borderRadius: 24,
+    overflow: "hidden",
+    boxShadow: "0 6px 20px rgba(0,0,0,.05)",
+},
+
+cardImage: {
+    height: 140,
+    position: "relative",
+},
+
+cardEmoji: {
+    fontSize: 60,
+    display: "flex",
+    justifyContent: "center",
+    paddingTop: 28,
+},
+
+cardBadge: {
+    position: "absolute",
+    left: 15,
+    bottom: 15,
+    background: "rgba(255,255,255,.9)",
+    padding: "6px 12px",
+    borderRadius: 999,
+    fontSize: 12,
+    fontWeight: 800,
+},
+
+cardBody: {
+    padding: 20,
+},
+
+cardTitle: {
+    fontSize: 18,
+    fontWeight: 800,
+    marginBottom: 8,
+},
+
+cardDetail: {
+    color: "rgba(26,26,26,.55)",
+    lineHeight: 1.6,
+    marginBottom: 16,
+},
+
+cardRow: {
+    display: "flex",
+    justifyContent: "space-between",
+},
+
+matchBadge: {
+    background: "#FDE8D8",
+    color: "#E8601A",
+    padding: "4px 10px",
+    borderRadius: 999,
+    fontWeight: 800,
+    fontSize: 12,
+},
+
+howSection: {
+    background: "#2D3B2E",
+    color: "white",
+    padding: "90px 40px",
+},
+
+howContainer: {
+    maxWidth: 1200,
+    margin: "0 auto",
+},
+
+howTitle: {
+    fontSize: 42,
+    fontWeight: 900,
+    marginBottom: 50,
+},
+
+stepsGrid: {
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))",
+    gap: 40,
+},
+
+stepIcon: {
+    fontSize: 36,
+    marginBottom: 20,
+},
+
+stepTitle: {
+    fontWeight: 800,
+    marginBottom: 10,
+},
+
+stepDesc: {
+    color: "rgba(255,255,255,.65)",
+    lineHeight: 1.7,
+},
+
+footer: {
+    background: "#1A1A1A",
+    color: "white",
+    padding: 40,
+},
+
+footerLogo: {
+    color: "#E8601A",
+    fontSize: 28,
+    fontWeight: 900,
+    marginBottom: 20,
+},
+
+footerLinks: {
+    display: "flex",
+    gap: 24,
+    marginBottom: 20,
+},
+
+footerCopy: {
+    opacity: 0.4,
+},
+
